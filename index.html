@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puestos de artesanía</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="eyebrow">FERIA DE ARTESANÍA</p>
+      <h1>Puestos de artesanía</h1>
+      <p class="subtitle">Encontrá puestos por tipo de artesanía y consultá su ubicación.</p>
+    </div>
+    <span class="tag">Gestión de puestos</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2 id="form-title">Agregar puesto</h2>
+          <p>Completá los datos del puesto.</p>
+        </div>
+      </div>
+
+      <form id="puesto-form">
+        <input type="hidden" id="registro-id">
+        <label for="nombre_punto">Nombre del punto</label>
+        <input id="nombre_punto" required maxlength="100" placeholder="Ej.: Artesanías Ñandutí">
+
+        <div class="two">
+          <div>
+            <label for="numero_puesto">Número de puesto</label>
+            <input id="numero_puesto" required placeholder="Ej.: 1">
+          </div>
+          <div>
+            <label for="sector">Sector</label>
+            <input id="sector" required maxlength="80" placeholder="Ej.: Sector A">
+          </div>
+        </div>
+
+        <label for="rubro">Rubro</label>
+        <select id="rubro" required>
+          <option value="">Seleccioná un rubro</option>
+          <option value="cerámica">Cerámica</option>
+          <option value="tejido">Tejido</option>
+        </select>
+
+        <div class="two">
+          <div>
+            <label for="latitud">Latitud</label>
+            <input id="latitud" type="number" step="any" required placeholder="-25.2637">
+          </div>
+          <div>
+            <label for="longitud">Longitud</label>
+            <input id="longitud" type="number" step="any" required placeholder="-57.5759">
+          </div>
+        </div>
+
+        <p class="hint">Latitud: de -90 a 90. Longitud: de -180 a 180.</p>
+        <div class="actions">
+          <button type="submit" id="save-btn">Guardar puesto</button>
+          <button type="button" class="secondary hidden" id="cancel-btn">Cancelar edición</button>
+        </div>
+      </form>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>Puestos registrados</h2>
+          <p>Elegí un puesto para ver su ubicación.</p>
+        </div>
+        <button id="reload-btn" class="secondary small" type="button">Actualizar</button>
+      </div>
+
+      <label for="filter">Filtrar por rubro</label>
+      <select id="filter">
+        <option value="todos">Todos los rubros</option>
+        <option value="cerámica">Cerámica</option>
+        <option value="tejido">Tejido</option>
+      </select>
+      <div id="count" class="count">0 puestos</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Puesto</th>
+              <th>Nombre / Rubro</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="puestos-list">
+            <tr><td colspan="3" class="empty">Cargando registros...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel map-panel">
+      <div class="section-heading">
+        <div>
+          <h2>Ubicación en Google Maps</h2>
+          <p id="map-caption">Seleccioná un registro de la lista.</p>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe id="map" title="Mapa de ubicación del puesto"
+          src="https://maps.google.com/maps?q=Asuncion%2C%20Paraguay&z=12&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <a id="open-map" class="map-link" href="https://maps.google.com/" target="_blank" rel="noopener">Abrir Google Maps</a>
+    </section>
+  </main>
+
+  <footer>Proyecto práctico · Gestión de puestos de artesanía</footer>
+  <script src="app.js"></script>
+</body>
+</html>
