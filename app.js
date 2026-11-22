@@ -4,7 +4,7 @@
   2. Pegá la clave anon/public (NO uses service_role).
 */
 const SUPABASE_URL = "https://wxcrknnuyritretcrwqw.supabase.co";
-const SUPABASE_ANON_KEY = "PEGAR_AQUI_LA_CLAVE_ANON_PUBLIC";
+const SUPABASE_ANON_KEY = "sb_publishable_h2iXUhPUr277BLuio79HPw_2BOjBmg8;
 
 const TABLE = "puestos_artesania";
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
